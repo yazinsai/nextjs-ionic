@@ -12,26 +12,25 @@ import {
   IonContent,
   IonMenuButton,
 } from '@ionic/react';
-import Notifications from './Notifications';
 import { useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
 import { getHomeItems } from '../../store/selectors';
 import Store from '../../store';
 
 const FeedCard = ({ title, type, text, author, authorAvatar, image }) => (
-  <Card className="my-4 mx-auto">
-    <div className="h-32 w-full relative">
-      <img className="rounded-t-xl object-cover min-w-full min-h-full max-w-full max-h-full" src={image} alt="" />
+  <Card className="mx-auto my-4">
+    <div className="relative w-full h-32">
+      <img className="object-cover max-w-full max-h-full min-w-full min-h-full rounded-t-xl" src={image} alt="" />
     </div>
     <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-gray-900">
-      <h4 className="font-bold py-0 text-s text-gray-400 dark:text-gray-500 uppercase">{type}</h4>
-      <h2 className="font-bold text-2xl text-gray-800 dark:text-gray-100">{title}</h2>
-      <p className="sm:text-sm text-s text-gray-500 mr-1 my-3 dark:text-gray-400">{text}</p>
+      <h4 className="py-0 font-bold text-gray-400 uppercase text-s dark:text-gray-500">{type}</h4>
+      <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{title}</h2>
+      <p className="my-3 mr-1 text-gray-500 sm:text-sm text-s dark:text-gray-400">{text}</p>
       <div className="flex items-center space-x-4">
-        <div className="w-10 h-10 relative">
-          <img src={authorAvatar} className="rounded-full object-cover min-w-full min-h-full max-w-full max-h-full" alt="" />
+        <div className="relative w-10 h-10">
+          <Image src={authorAvatar} layout="fill" className="object-cover max-w-full max-h-full min-w-full min-h-full rounded-full" alt="" />
         </div>
-        <h3 className="text-gray-500 dark:text-gray-200 m-l-8 text-sm font-medium">{author}</h3>
+        <h3 className="text-sm font-medium text-gray-500 dark:text-gray-200 m-l-8">{author}</h3>
       </div>
     </div>
   </Card>
@@ -62,7 +61,6 @@ const Feed = () => {
             <IonTitle size="large">Feed</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Notifications open={showNotifications} onDidDismiss={() => setShowNotifications(false)} />
         {homeItems.map((i, index) => (
           <FeedCard {...i} key={index} />
         ))}

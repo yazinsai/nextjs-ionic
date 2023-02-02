@@ -1,11 +1,8 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { cog, flash, list } from 'ionicons/icons';
+import { cog, flash } from 'ionicons/icons';
 
 import Home from './Feed';
-import Lists from './Lists';
-import ListDetail from './ListDetail';
 import Settings from './Settings';
 
 const Tabs = () => {
@@ -13,8 +10,6 @@ const Tabs = () => {
     <IonTabs>
       <IonRouterOutlet>
         <Route path="/tabs/feed" render={() => <Home />} exact={true} />
-        <Route path="/tabs/lists" render={() => <Lists />} exact={true} />
-        <Route path="/tabs/lists/:listId" render={() => <ListDetail />} exact={true} />
         <Route path="/tabs/settings" render={() => <Settings />} exact={true} />
         <Route path="/tabs" render={() => <Redirect to="/tabs/feed" />} exact={true} />
       </IonRouterOutlet>
@@ -23,11 +18,7 @@ const Tabs = () => {
           <IonIcon icon={flash} />
           <IonLabel>Feed</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab2" href="/tabs/lists">
-          <IonIcon icon={list} />
-          <IonLabel>Lists</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="tab3" href="/tabs/settings">
+        <IonTabButton tab="tab2" href="/tabs/settings">
           <IonIcon icon={cog} />
           <IonLabel>Settings</IonLabel>
         </IonTabButton>
